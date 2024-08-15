@@ -80,5 +80,16 @@ class TodoListTest {
         Assertions.assertEquals("Incomplete", filteredList2.get(0).taskStatus);
     }
 
+    @Test
+    public void testDeleteTask(){
+        TodoList toDoList = new TodoList();
+        toDoList.addTask("1", "One");
+        toDoList.addTask("2", "Two");
+        toDoList.addTask("3", "Three");
+        toDoList.deleteTask("2");
+        Assertions.assertEquals(null, toDoList.searchTask("2"));
+        Task expectedTask = new Task("1","One");
+        Assertions.assertEquals(expectedTask, toDoList.searchTask("1"));
+    }
 
 }
