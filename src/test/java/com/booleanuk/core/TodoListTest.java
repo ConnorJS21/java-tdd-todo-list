@@ -5,9 +5,10 @@ import org.junit.jupiter.api.Test;
 
 class TodoListTest {
     @Test
-    public void exampleTest() {
-        String hello = "Hello";
-        Assertions.assertEquals("Hello", hello);
-        Assertions.assertNotEquals("Goodbye", hello);
+    public void testAddTask() {
+        TodoList toDoList = new TodoList();
+        toDoList.addTask("Make coffee", "Put nescafe in cup, follow with milk, sugar and hot water.");
+        Assertions.assertEquals(toDoList.toDoList.get[0], taskName="Make coffee", taskDesc = "Put nescafe in cup, follow with milk, sugar and hot water.");
+
     }
 }
