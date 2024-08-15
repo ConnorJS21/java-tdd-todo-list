@@ -42,4 +42,17 @@ public class TodoList {
         Task task = this.searchTask(taskName);
         task.taskStatus = newStatus;
     }
+
+    public ArrayList<Task>  filterList(String criteriaStatus, ArrayList<Task> tasks){
+        ArrayList<Task> filteredTasks = new ArrayList<>();;
+        Task task = null;
+        for (int i = 0; i < tasks.size(); i++) {
+            task = tasks.get(i);
+            if(task.taskStatus.equals(criteriaStatus)){
+                filteredTasks.add(task);
+            }
+        }
+        System.out.println(filteredTasks);
+        return filteredTasks;
+    }
 }

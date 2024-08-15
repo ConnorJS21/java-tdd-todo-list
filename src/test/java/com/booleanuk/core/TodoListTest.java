@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -71,13 +72,13 @@ class TodoListTest {
         toDoList.addTask("3", "Three");
         toDoList.changeTaskStatus("1", "Complete");
         toDoList.changeTaskStatus("3", "Complete");
-        TodoList filteredList = toDoList.filterList("Complete");
-        Task searchTask = filteredList.searchTask("1");
-        Assertions.assertEquals("Complete", searchTask.taskStatus);
-        searchTask = filteredList.searchTask("3");
-        Assertions.assertEquals("Complete", searchTask.taskStatus);
-        searchTask = filteredList.searchTask("2");
-        Assertions.assertEquals(null, searchTask);
-
+        ArrayList<Task> filteredList = toDoList.filterList("Complete", toDoList.tasks);
+        Assertions.assertEquals("Complete", filteredList.get(0).taskStatus);
+        Assertions.assertEquals("Complete", filteredList.get(1).taskStatus);
+        Assertions.assertEquals(2, filteredList.size());
+        ArrayList<Task> filteredList2 = toDoList.filterList("Incomplete", toDoList.tasks);
+        Assertions.assertEquals("Incomplete", filteredList2.get(0).taskStatus);
     }
+
+
 }
