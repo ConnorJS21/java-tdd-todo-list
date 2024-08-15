@@ -55,4 +55,9 @@ public class TodoList {
         System.out.println(filteredTasks);
         return filteredTasks;
     }
+
+    public void deleteTask(String taskName){
+        Task taskToDelete = this.searchTask(taskName);
+        tasks.remove(tasks.indexOf(taskToDelete));
+    }
 }

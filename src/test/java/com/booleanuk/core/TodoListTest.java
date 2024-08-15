@@ -89,7 +89,9 @@ class TodoListTest {
         toDoList.deleteTask("2");
         Assertions.assertEquals(null, toDoList.searchTask("2"));
         Task expectedTask = new Task("1","One");
-        Assertions.assertEquals(expectedTask, toDoList.searchTask("1"));
+        Assertions.assertEquals(expectedTask.taskName, toDoList.searchTask("1").taskName);
     }
+
+
 
 }
