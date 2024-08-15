@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 class TodoListTest {
     @Test
@@ -42,5 +44,18 @@ class TodoListTest {
         Assertions.assertEquals("Name: 3 | Description: Three | Status: Open", task );
         task = toDoList.searchTask("4");
         Assertions.assertEquals("This task doesn't exist within this list.", task);
+    }
+    @Test
+    public void testChangeTaskStatus() {
+        TodoList toDoList = new TodoList();
+        toDoList.addTask("1", "One");
+        toDoList.addTask("2", "Two");
+        toDoList.addTask("3", "Three");
+        toDoList.changeTaskStatus("1", "Closed");
+        String task = toDoList.searchTask("1");
+        String regex = "Status:\\s*(.*)";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(task);
+        Assertions.assertEquals("Closed", matcher);
     }
 }
