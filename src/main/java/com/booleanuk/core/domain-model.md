@@ -2,7 +2,7 @@
 |----------|---------------------------------------------|----------|----------------------------------------------------------------------------------------|
 | ToDoList | addTask(String taskName, String taskDesc )  |          |                                                                                        |
 | ToDoList | printList()                                 |          | List shown in console                                                                  |
-| Task     | changeStatus(String task)                   |          |                                                                                        |
+| Task     | changeStatus(String task, String newStatus) |          |                                                                                        |
 | ToDoList | filterCriteria(String criteriaStatus)       |          | List shown, filtered by criteria                                                       |
 | ToDoList | searchTask(String task)                     |          | Task returned or not found message                                                     |
 | ToDoList | deleteTask(String task)                     |          | List shown without deleted task                                                        |
