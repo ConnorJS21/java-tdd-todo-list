@@ -29,8 +29,10 @@ class TodoListTest {
         toDoList.addTask("1", "One");
         toDoList.addTask("2", "Two");
         toDoList.addTask("3", "Three");
+        System.out.println(toDoList.toString());
         String list = toDoList.printList();
-        Assertions.assertEquals("Name: 1 | Description: One | Status: Open\nName: 2 | Description: Two | Status: Open\nName: 3 | Description: Three | Status: Open\n", list);
+        Assertions.assertEquals("Name: 1 | Description: One | Status: Incomplete\nName: 2 | Description: Two | Status: Incomplete\nName: 3 | Description: Three | Status: Incomplete\n", list);
+        System.out.println(list);
     }
 
     @Test
@@ -92,6 +94,27 @@ class TodoListTest {
         Assertions.assertEquals(expectedTask.taskName, toDoList.searchTask("1").taskName);
     }
 
+    @Test
+    public void testSortList(){
+        TodoList toDoList = new TodoList();
+        toDoList.addTask("A", "One");
+        toDoList.addTask("B", "Two");
+        toDoList.addTask("C", "Three");
+        TodoList expectedSortedList = new TodoList();
+        expectedSortedList.addTask("C", "Three");
+        expectedSortedList.addTask("B", "Two");
+        expectedSortedList.addTask("A", "One");
+        toDoList.sortListDescending();
+        Assertions.assertEquals(expectedSortedList.tasks.get(0).taskName, toDoList.tasks.get(0).taskName);
+        Assertions.assertEquals(expectedSortedList.tasks.get(2).taskName, toDoList.tasks.get(2).taskName);
+        TodoList expectedSortedListAsc = new TodoList();
+        expectedSortedListAsc.addTask("A", "One");
+        expectedSortedListAsc.addTask("B", "Two");
+        expectedSortedListAsc.addTask("C", "Three");
+        toDoList.sortListAscending();
+        Assertions.assertEquals(expectedSortedListAsc.tasks.get(0).taskName, toDoList.tasks.get(0).taskName);
+        Assertions.assertEquals(expectedSortedListAsc.tasks.get(2).taskName, toDoList.tasks.get(2).taskName);
+    }
 
 
 }
