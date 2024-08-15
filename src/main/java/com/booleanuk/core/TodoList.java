@@ -1,7 +1,6 @@
 package com.booleanuk.core;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class TodoList {
     ArrayList<Task> tasks = new ArrayList<>();
@@ -25,22 +24,22 @@ public class TodoList {
         return tasksString;
     }
 
-    public String searchTask(String taskName){
-        boolean taskFound = false;
-        String returnString = "This task doesn't exist within this list.";
+    public Task searchTask(String taskName){
         Task task = null;
-        for (int i = 0; i < tasks.size(); i++) {
-            task = tasks.get(i);
-            if(task.taskName.equals(taskName)){
-                taskFound = true;
+        for(int i = 0; i < tasks.size(); i++) {
+            if(tasks.get(i).taskName.equals(taskName)){
+                task = tasks.get(i);
                 break;
             }
         }
-        if(taskFound){
-            returnString = "Name: " + task.taskName + " | ";
-            returnString = returnString + "Description: " + task.taskDesc + " | ";
-            returnString = returnString + "Status: " + task.taskStatus;
+        if(task == null) {
+            System.out.println("This task doesn't exist within this list.");
         }
-        return returnString;
+            return task;
+    }
+
+    public void changeTaskStatus(String taskName, String newStatus){
+        Task task = this.searchTask(taskName);
+        task.taskStatus = newStatus;
     }
 }

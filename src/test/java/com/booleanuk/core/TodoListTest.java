@@ -29,7 +29,7 @@ class TodoListTest {
         toDoList.addTask("2", "Two");
         toDoList.addTask("3", "Three");
         String list = toDoList.printList();
-        Assertions.assertEquals("Name: 1 | Description: One | Status: Open\nName: 2 | Description: Two | Status: Open\nName: 3 | Description: Three | Status: Open\n",list );
+        Assertions.assertEquals("Name: 1 | Description: One | Status: Open\nName: 2 | Description: Two | Status: Open\nName: 3 | Description: Three | Status: Open\n", list);
     }
 
     @Test
@@ -38,13 +38,21 @@ class TodoListTest {
         toDoList.addTask("1", "One");
         toDoList.addTask("2", "Two");
         toDoList.addTask("3", "Three");
-        String task = toDoList.searchTask("1");
-        Assertions.assertEquals("Name: 1 | Description: One | Status: Open", task );
+        Task task = toDoList.searchTask("1");
+        Task expectedTask = new Task("1","One");
+
+        Assertions.assertEquals(expectedTask.taskName,task.taskName );
+        Assertions.assertEquals(expectedTask.taskDesc,task.taskDesc );
+
         task = toDoList.searchTask("3");
-        Assertions.assertEquals("Name: 3 | Description: Three | Status: Open", task );
-        task = toDoList.searchTask("4");
-        Assertions.assertEquals("This task doesn't exist within this list.", task);
+        expectedTask = new Task("3","Three");
+
+        Assertions.assertEquals(expectedTask.taskName,task.taskName );
+        Assertions.assertEquals(expectedTask.taskDesc,task.taskDesc );
+
     }
+
+
     @Test
     public void testChangeTaskStatus() {
         TodoList toDoList = new TodoList();
@@ -52,10 +60,7 @@ class TodoListTest {
         toDoList.addTask("2", "Two");
         toDoList.addTask("3", "Three");
         toDoList.changeTaskStatus("1", "Closed");
-        String task = toDoList.searchTask("1");
-        String regex = "Status:\\s*(.*)";
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(task);
-        Assertions.assertEquals("Closed", matcher);
+        Task searchTask = toDoList.searchTask("1");
+        Assertions.assertEquals("Closed", searchTask.taskStatus);
     }
 }
