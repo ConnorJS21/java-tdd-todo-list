@@ -14,7 +14,7 @@ public class Task {
         String formattedDateTime = now.format(formatter);
         this.taskDesc = taskDesc;
         this.taskName = taskName;
-        this.taskStatus = "Open";
+        this.taskStatus = "Incomplete";
         this.taskId = formattedDateTime;
     }
     @Override

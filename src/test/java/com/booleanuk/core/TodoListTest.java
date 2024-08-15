@@ -59,8 +59,25 @@ class TodoListTest {
         toDoList.addTask("1", "One");
         toDoList.addTask("2", "Two");
         toDoList.addTask("3", "Three");
-        toDoList.changeTaskStatus("1", "Closed");
+        toDoList.changeTaskStatus("1", "Complete");
         Task searchTask = toDoList.searchTask("1");
-        Assertions.assertEquals("Closed", searchTask.taskStatus);
+        Assertions.assertEquals("Complete", searchTask.taskStatus);
+    }
+    @Test
+    public void testFilterList(){
+        TodoList toDoList = new TodoList();
+        toDoList.addTask("1", "One");
+        toDoList.addTask("2", "Two");
+        toDoList.addTask("3", "Three");
+        toDoList.changeTaskStatus("1", "Complete");
+        toDoList.changeTaskStatus("3", "Complete");
+        TodoList filteredList = toDoList.filterList("Complete");
+        Task searchTask = filteredList.searchTask("1");
+        Assertions.assertEquals("Complete", searchTask.taskStatus);
+        searchTask = filteredList.searchTask("3");
+        Assertions.assertEquals("Complete", searchTask.taskStatus);
+        searchTask = filteredList.searchTask("2");
+        Assertions.assertEquals(null, searchTask);
+
     }
 }
