@@ -27,6 +27,6 @@ class TodoListTest {
         toDoList.addTask("2", "Two");
         toDoList.addTask("3", "Three");
         String list = toDoList.printList();
-        Assertions.assertEquals(list, "Name: 1 | Description: One \nName: 2 | Description: Two \nName: 3 | Description: Three ");
+        Assertions.assertEquals("Name: 1 | Description: One | Status: Open\nName: 2 | Description: Two | Status: Open\nName: 3 | Description: Three | Status: Open\n",list );
     }
 }
