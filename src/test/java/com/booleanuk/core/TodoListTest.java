@@ -18,7 +18,7 @@ class TodoListTest {
         System.out.println(task);
         Assertions.assertEquals(task.taskName, "Make coffee");
         Assertions.assertEquals(task.taskDesc, "Put nescafe in cup, follow with milk, sugar and hot water.");
-        Assertions.assertEquals(task.taskStatus, "Open");
+        Assertions.assertEquals(task.taskStatus, "Incomplete");
 
 
     }
